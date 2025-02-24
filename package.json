@@ -1,0 +1,25 @@
+{
+  "name": "animal-farm",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm run install:frontend && npm run install:api",
+    "install:frontend": "cd frontend && npm install",
+    "install:api": "cd api && npm install",
+    "migrate": "cd api && npm run migration:run",
+    "start:frontend": "cd frontend && npm start",
+    "start:api": "npm run migrate && cd api && npm run start:dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build:api": "cd api && npm run build",
+    "build:all": "npm run build:frontend && npm run build:api",
+    "start:db": "docker compose up postgres",
+    "start:app": "concurrently \"npm run start:api\" \"npm run start:frontend\"",
+    "start:all": "concurrently \"npm run start:db\" \"npm run start:app\"",
+    "start:prod": "concurrently \"npm run start:db\" \"cd api && npm run start:prod\" \"cd frontend/build && npx serve\"",
+    "start:docker:prod": "docker compose --profile prod up --build",
+    "start:docker:dev": "docker compose --profile dev up"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

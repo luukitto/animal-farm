@@ -1,0 +1,11 @@
+# Version control
+.git
+.gitignore
+
+# Environment
+.env
+**/.env
+
+# IDE
+.idea
+.vscode
