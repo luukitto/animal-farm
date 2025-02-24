@@ -11,7 +11,7 @@ export const databaseConfig: TypeOrmModuleOptions = {
     password: 'bidzina',
     database: 'animal_farm',
     entities: [Pig, Animal],
-    synchronize: true,
+    synchronize: false,
     logging: true,
     migrations: ['dist/migrations/*.ts'],
     migrationsTableName: 'migrations',
