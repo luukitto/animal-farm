@@ -1,0 +1,27 @@
+<div class="status-container">
+  <ng-container *ngIf="pigStatus$ | async as pigStatus">
+    <mat-card class="status-card">
+      <mat-card-content>
+        <div class="status-badge" [ngClass]="pigStatus.status">
+          <div [ngSwitch]="pigStatus.status">
+            <img *ngSwitchCase="Status.DEFAULT"
+                 alt="pig"
+                 src="assets/default.jpeg"
+                 (click)="updatePigStatus(pigStatus.status)"
+                 class="status-image">
+            <img *ngSwitchCase="Status.HAPPY"
+                 alt="happy pig"
+                 src="assets/happy.jpeg"
+                 class="status-image">
+            <img *ngSwitchCase="Status.PUTIN"
+                 alt="pigs in love"
+                 src="assets/putin.jpeg"
+                 (click)="updatePigStatus(pigStatus.status)"
+                 class="status-image">
+          </div>
+        </div>
+      </mat-card-content>
+      <app-music [status]="pigStatus.status"></app-music>
+    </mat-card>
+  </ng-container>
+</div>
