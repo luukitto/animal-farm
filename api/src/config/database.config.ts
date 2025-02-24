@@ -5,11 +5,11 @@ import { Animal } from "../entities/animal.entity";
 
 export const databaseConfig: TypeOrmModuleOptions = {
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'pig',
-    password: 'bidzina',
-    database: 'animal_farm',
+    host: process.env.DATABASE_HOST || 'localhost',
+    port: parseInt(process.env.DATABASE_PORT || '5432'),
+    username: process.env.DATABASE_USER || 'pig',
+    password: process.env.DATABASE_PASSWORD || 'bidzina',
+    database: process.env.DATABASE_NAME || 'animal_farm',
     entities: [Pig, Animal],
     synchronize: false,
     logging: true,
